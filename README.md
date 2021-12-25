@@ -6,3 +6,8 @@ Das Python Tool dient zur Bestimmung der sicheren Entnahmeraten aus einem Weltpo
 * Beliebige Generierung von Vermögensrenditen (historische S&P500, Monte Carlo)
 * Beliebige Vermögensallokationsstrategien
 * Beliebige Entnahmestrategie (feste Entnahme, variabler Prozentsatz)
+
+
+Die Ideen für diese frei zugängliche Implementierung basieren auf Website: [Finanzen? Erklärt!](https:/https://www.finanzen-erklaert.de/)
+
+
