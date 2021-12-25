@@ -7,7 +7,6 @@ Das Python Tool dient zur Bestimmung der sicheren Entnahmeraten aus einem Weltpo
 * Beliebige Vermögensallokationsstrategien
 * Beliebige Entnahmestrategie (feste Entnahme, variabler Prozentsatz)
 
-
-Die Ideen für diese frei zugängliche Implementierung basieren auf Website: [Finanzen? Erklärt!](https:/https://www.finanzen-erklaert.de/)
+Die Ideen und Ansätze für diese frei zugängliche Implementierung basieren auf Website: [Finanzen? Erklärt!](https://www.finanzen-erklaert.de/)
 
 
