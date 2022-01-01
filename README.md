@@ -37,7 +37,9 @@ wird im folgenden mit Hilfe der o. g. Daten validiert ...
 
 Coming soon.
 
+Das folgende Bild zeigt die Fehlerwahrscheinlichkeit der 4% Regel über eine Laufzeit von 0 - 100 Jahren.
 
+![Fehlerquote der 4% Regel nach Laufzeit mit Inflatiosanpassung](docu/Fehlerquote4ProzentRegel.png)
 
 
 
