@@ -14,7 +14,7 @@ Die Datengrundlage für die montliche Berechnungen basieren auf dem S&P500 Daten
 [Early Retirement Now](https://earlyretirementnow.com/2018/08/29/google-sheet-updates-swr-series-part-28/) als Excel Tabelle verfügbar.
 
 Mit dem Python-Skript [ReadExel.py](https://github.com/ThoEngel/rentenplanung/blob/main/ReadExcel.py) werden die benötigen Daten extrahiert
-in eine Pickle-Datenstruktur exportiert:
+und in eine Pickle-Datenstruktur exportiert:
 
 ```
 print(return_df.head())
@@ -31,7 +31,7 @@ print(return_df.head())
 
 
 
-Quelle: 
+**Quelle**: 
 [Vorsicht vor der 4% Regel]( https://www.finanzen-erklaert.de/vorsicht-vor-der-4-regel/)
 [Early Retirement Now](https://earlyretirementnow.com/2018/08/29/google-sheet-updates-swr-series-part-28/
 
