@@ -54,3 +54,5 @@ return_df.index = range(len(return_df))
 
 # Schreibe pickle ....
 return_df.to_pickle('real_return_df_new.pickle')
+
+print(return_df.head())
