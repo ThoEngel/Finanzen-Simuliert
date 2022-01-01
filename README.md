@@ -1,13 +1,13 @@
 ## Rentenplanung
 Tool zur Rentenplanung
 
-Das Python Tool dient zur Bestimmung der sicheren Entnahmeraten aus einem Weltportfolio:
+Das Python Tool dient zur Bestimmung der sicheren Entnahmerate aus einem Weltportfolio:
 
 * Beliebige Generierung von Vermögensrenditen (historische S&P500, Monte Carlo)
 * Beliebige Vermögensallokationsstrategien
 * Beliebige Entnahmestrategie (feste Entnahme, variabler Prozentsatz)
 
-Die Ideen und Ansätze für diese frei zugängliche Implementierung basieren auf Website: [Finanzen? Erklärt!](https://www.finanzen-erklaert.de/)
+Die Ideen und Ansätze für diese frei zugängliche Implementierung basieren auf der Website: [Finanzen? Erklärt!](https://www.finanzen-erklaert.de/)
 
 ## Datengrundlage
 Die Datengrundlage für die montliche Berechnungen basieren auf dem S&P500 Daten. Diese Daten inkl. der Inflation sind auf der Webseite:
