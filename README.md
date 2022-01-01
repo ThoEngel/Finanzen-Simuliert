@@ -9,7 +9,7 @@ Das Python Tool dient zur Bestimmung der sicheren Entnahmeraten aus einem Weltpo
 
 Die Ideen und Ansätze für diese frei zugängliche Implementierung basieren auf Website: [Finanzen? Erklärt!](https://www.finanzen-erklaert.de/)
 
-##Datengrundlage
+## Datengrundlage
 Die Datengrundlage für die montliche Berechnungen basieren auf dem S&P500 Daten. Diese Daten inkl. der Inflation sind auf der Webseite:
 [Early Retirement Now](https://earlyretirementnow.com/2018/08/29/google-sheet-updates-swr-series-part-28/) als Excel Tabelle verfügbar.
 
