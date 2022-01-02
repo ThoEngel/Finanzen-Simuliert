@@ -28,9 +28,7 @@ config = {
     'withdrawal': {'fixed_pct': 4.0}               # Proz. Entnahmerate pro Jahr vom Startdepot
 }
 
-#years = range(14, 101, 2)           # Dauer der Entnahme in Jahre
-years = [1,13,14,15,16,17,18,19,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,69,72,75,78,81,84,87,90,93,96,100]
-
+years = range(1, 101, 1)           # Dauer der Entnahme in Jahre
 
 df = pd.DataFrame(columns=[1], index=years)
 row_indexer = 0
