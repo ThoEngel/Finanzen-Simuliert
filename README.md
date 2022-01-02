@@ -9,7 +9,7 @@ Das Python Tool dient zur Bestimmung der sicheren Entnahmerate aus einem Weltpor
 
 Die Ideen und Ansätze für diese frei zugängliche Implementierung basieren auf der Website: [Finanzen? Erklärt!](https://www.finanzen-erklaert.de/)
 
-## Datengrundlage
+## 1. Datengrundlage
 Die Datengrundlage für die monatliche Berechnungen basieren auf dem S&P500 Daten. Diese Daten inkl. der Inflation sind auf der Webseite:
 [Early Retirement Now](https://earlyretirementnow.com/2018/08/29/google-sheet-updates-swr-series-part-28/) als Excel Tabelle verfügbar.
 
@@ -30,16 +30,22 @@ print(return_df.head())
 ....
 
 ```
-
-## Analyse der 4%-Regel
+## 2. Vorsicht vor der 4% Regel
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel:  [Vorsicht vor der 4% Regel]( https://www.finanzen-erklaert.de/vorsicht-vor-der-4-regel/)
+## 2.1. Analyse der 4% Regel
 Im Oktober 1994 wurde die [Trinity-Studie](http://www.retailinvestor.org/pdf/Bengen1.pdf) durch William Bengen veröffentlich. Diese Studie, besser bekannt unter der 4%-Regel 
-wird im folgenden mit Hilfe der o. g. Daten validiert ...
+wird im folgenden mit Hilfe der o. g. Daten validiert. 
+Im Gegensatz zu der Trinity-Studie wird der Aktienanteil auf 100% gesetzt, da Anleihen aktuell sowie in der Zukunft wohl keine oder nur geringe Rendite bringen.
 
-Coming soon.
-
-Das folgende Bild zeigt die Fehlerwahrscheinlichkeit der 4% Regel über eine Laufzeit von 0 - 100 Jahren.
+Mit dem Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/Entnahmesimulation.py) wird die 4% Regel für unterschiedliche Laufzeiten berechnet.
+Das folgende Bild zeigt die Fehlerquote der 4%-Regel über eine Laufzeit von 0-100 Jahren.
 
 ![Fehlerquote der 4% Regel nach Laufzeit mit Inflatiosanpassung](docu/Fehlerquote4ProzentRegel.png)
+
+### 2.2. Sichere Entnahmerate 
+Das folgende Bild zeigt die Auswertung der sicheren Entnahmerate nach Laufzeit sowie in Abhängigkeit von vier verschiedenen Fehlerquoten:
+
+Coming soon ....
 
 
 
