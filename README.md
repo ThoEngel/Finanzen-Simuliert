@@ -47,8 +47,8 @@ Das folgende Bild zeigt die Auswertung der sicheren Entnahmerate nach Laufzeit s
 
 ![Sichere Entnahme nach Laufzeit sowie Fehlerquoten](docu/SichereEntnahmerate.png)
 
-Das Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahme.py) berechnet für jede Laufzeit sowie Fehlerquote die maximal mögliche Entnahme Rate.
-Diese Berechnung der Entnahmerate erfolgt über eine Optimierung, der sogenannten sukzessiven Approximation (schrittweise Annäherung).
+Das Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahme.py) berechnet für jede Laufzeit sowie Fehlerquote die maximal mögliche Entnahmerate.
+Diese Berechnung der Entnahmerate erfolgt über eine Optimierung der sogenannten sukzessiven Approximation (schrittweise Annäherung).
 
 
 
