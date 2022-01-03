@@ -116,7 +116,7 @@ fig.update_layout(
     legend_title="Fehlerquote [%]",
     font=dict(
         family="Courier New, monospace",
-        size=16,
+        size=18,
         color="RebeccaPurple"
     )
 )
