@@ -46,6 +46,9 @@ class SEsimulation():
         self.withdrawal = config.get('withdrawal')
         self.init_withdrawal()
 
+        self.visualization = config.get('visualization')
+        self.init_visualization()
+
         self.latest_trial = Trialdata()
         self.latest_simulation = []
 
@@ -74,6 +77,12 @@ class SEsimulation():
         """initialize for withdrawal based on configs
         """
         pass
+
+    def init_visualization(self):
+        """initialize for visualization based on configs
+        """
+        pass
+
 
     def get_withdrawal(self):
         """return withdrawal for current iteration

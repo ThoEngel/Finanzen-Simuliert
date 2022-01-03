@@ -56,7 +56,7 @@ fig.update_layout(
     yaxis_title="Fehlerrate [%]",
     font=dict(
         family="Courier New, monospace",
-        size=14,
+        size=16,
         color="RebeccaPurple"
     )
 )

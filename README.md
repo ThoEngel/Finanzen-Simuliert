@@ -45,7 +45,11 @@ Das folgende Bild zeigt die Fehlerquote der 4%-Regel über eine Laufzeit von 0-1
 ### 2.2. Sichere Entnahmerate 
 Das folgende Bild zeigt die Auswertung der sicheren Entnahmerate nach Laufzeit sowie in Abhängigkeit von vier verschiedenen Fehlerquoten:
 
-Coming soon ....
+![Sichere Entnahme nach Laufzeit sowie Fehlerquoten](docu/SichereEntnahmerate.png)
+
+Das Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahme.py) berechnet für jede Laufzeit sowie Fehlerquote die maximal mögliche Entnahme Rate.
+Diese Berechnung der Entnahmerate erfolgt über eine Optimierung, der sogenannten sukzessiven Approximation (schrittweise Annäherung).
+
 
 
 
