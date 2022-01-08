@@ -20,12 +20,14 @@ real_return_df = pd.read_pickle(RETURN_FILE)
 
 # Konfiguration der Entnahme Simulation
 config = {
-    'date': {'start': mDate(1, 2022)},             # Start Datum
+    'date': {'start': mDate(1, 2022),             # Start Datum
+    'start_retirement': mDate(1, 2022)},           # Start der Entnahme
     'assets': {'depot': 500000,                    # Depotvolumen zum Startzeitpunkt
                'fees': 0.00},                      # Jährliche Depotgebühren in %
     'simulation': {'returns_df': real_return_df,   # S&P500 Daten
                    'n_ret_years': 30},             # Simulationsdauer in Jahren
-    'withdrawal': {'fixed_pct': 4.0}               # Proz. Entnahmerate pro Jahr vom Startdepot
+    'withdrawal': {'fixed_pct': 4.0},              # Proz. Entnahmerate pro Jahr vom Startdepot
+    'visualization': {'textoutput': True}  # Textueller Zwischenausgaben als Debug Info
 }
 
 years = range(1, 101, 1)           # Dauer der Entnahme in Jahre

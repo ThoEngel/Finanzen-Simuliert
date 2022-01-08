@@ -173,6 +173,7 @@ class SEsimulation():
         # Parameter:
         fees = copy.deepcopy(self.assets['fees'])
         curDate = copy.deepcopy(self.date['start'])
+        curStartRetr = copy.deepcopy(self.date['start_retirement'])
 
         # Inflation
         curInflation = 100
@@ -189,8 +190,13 @@ class SEsimulation():
             current_trial.inflation.append(curInflation)
 
             # Entnahme aus dem Depot
-            current_trial.spend = min(float(self.get_withdrawal()/12), current_trial.portval)
-            current_trial.spends.append(current_trial.spend)
+            if curStartRetr <= curDate:  # Entnahme aus dem Depot
+                current_trial.spend = min(float(self.get_withdrawal()/12), current_trial.portval)
+                current_trial.spends.append(current_trial.spend)
+            else:
+                current_trial.spend = 0
+                current_trial.spends.append(current_trial.spend)
+
             current_trial.portval = current_trial.portval - current_trial.spend
 
             # Wertentwicklung des Depots inkl. Gebühren

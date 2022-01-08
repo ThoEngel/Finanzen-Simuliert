@@ -67,7 +67,8 @@ real_return_df = pd.read_pickle(RETURN_FILE)
 
 # Konfiguration der Entnahme Simulation
 config = {
-    'date': {'start': mDate(1, 2022)},             # Start Datum
+    'date': {'start': mDate(1, 2022),             # Start Datum
+    'start_retirement': mDate(1, 2022)},           # Start der Entnahme
     'assets': {'depot': 500000,                    # Depotvolumen zum Startzeitpunkt
                'fees': 0.00},                      # Jährliche Depotgebühren in %
     'simulation': {'returns_df': real_return_df,   # S&P500 Daten

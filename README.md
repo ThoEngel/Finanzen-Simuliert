@@ -41,7 +41,7 @@ Im Gegensatz zu der Trinity-Studie wird der Aktienanteil auf 100% gesetzt, da An
 Mit dem Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/Entnahmesimulation.py) wird die 4% Regel für unterschiedliche Laufzeiten berechnet.
 Das folgende Bild zeigt die Fehlerquote der 4%-Regel über eine Laufzeit von 0-100 Jahren.
 
-![Fehlerquote der 4% Regel nach Laufzeit mit Inflatiosanpassung](docu/Fehlerquote4ProzentRegel.png)
+![Fehlerquote der 4% Regel nach Laufzeit mit Inflationsanpassung](docu/Fehlerquote4ProzentRegel.png)
 
 ### 2.2. Sichere Entnahmerate 
 Das folgende Bild zeigt die Auswertung der sicheren Entnahmerate nach Laufzeit sowie in Abhängigkeit von vier verschiedenen Fehlerquoten:
@@ -51,13 +51,61 @@ Das folgende Bild zeigt die Auswertung der sicheren Entnahmerate nach Laufzeit s
 Das Python-Skript [Entnahmesimulation.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahme.py) berechnet für jede Laufzeit sowie Fehlerquote die maximal mögliche Entnahmerate.
 Diese Berechnung der Entnahmerate erfolgt über eine Optimierung der sogenannten sukzessiven Approximation (schrittweise Annäherung).
 
+### 2.3. Forward-Entnahmerate
+Bei der Berechnung der Forward-Entnahmerate wird berechnet, wie sich ein verzögerter Start der Entnahmephase auf die Entnahmerate auswirkt. 
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Mit der Forward-Entnahmerate steigert Jana ihr Budget um 38%](https://www.finanzen-erklaert.de/forward-entnahmerate/)
+
+Da bei der Auswertung die Ruhephase von 0 ... 20 Jahren und die Entnahmephase bei 20, 30, 40, 50 und 60 Jahren berechnet wird,
+sind somit insgesamt 21 x 5 = 105 Optimierung durchzuführen. In einem Optimierungslauf werden alle 1440 Epochen (01/1900 - 12/2020) mit der jeweilige Laufzeit (Ruhephase + Entnahmephase) berechnet. 
+Dies ist sehr rechenintensiv und wurde daher auf der einzelnen Rechenkerne verteilt. 
+ 
+
+Mit dem Python-Skript [ForwardEntnahmerate.py](https://github.com/ThoEngel/rentenplanung/blob/main/ForwardEntnahmerate.py) werden die folgenden Entnahmen in Abhängigkeit der Entnahmedauer sowie der Ruhephase berechnet:
+
+```
+Ergebnis: Forward Entnahmeraten in Abhängigkeit der Ruhephase (Zeile) sowie der Entnahmephase (Spalte):
++----+----------+----------+----------+----------+---------+
+|    |       20 |       30 |       40 |       50 |      60 |
+|----+----------+----------+----------+----------+---------|
+|  0 |  3.30835 |  2.87036 |  2.76929 |  2.6626  | 2.61768 |
+|  1 |  3.36807 |  2.96898 |  2.85836 |  2.76314 | 2.69207 |
+|  2 |  3.47691 |  3.12324 |  2.99866 |  2.87848 | 2.824   |
+|  3 |  3.81949 |  3.43738 |  3.30118 |  3.15854 | 3.1055  |
+|  4 |  4.15037 |  3.73218 |  3.59998 |  3.43121 | 3.36434 |
+|  5 |  4.42428 |  4.01835 |  3.84651 |  3.64753 | 3.5821  |
+|  6 |  4.76108 |  4.34243 |  4.12933 |  3.93618 | 3.87266 |
+|  7 |  5.0171  |  4.58389 |  4.35353 |  4.14165 | 4.0795  |
+|  8 |  5.22834 |  4.80592 |  4.55004 |  4.34271 | 4.2543  |
+|  9 |  5.59992 |  5.171   |  4.85594 |  4.64229 | 4.57031 |
+| 10 |  5.99338 |  5.52076 |  5.17672 |  4.93207 | 4.86245 |
+| 11 |  6.42589 |  5.91816 |  5.50591 |  5.25002 | 5.18298 |
+| 12 |  6.98547 |  6.43645 |  5.92747 |  5.68508 | 5.62157 |
+| 13 |  7.85704 |  6.97449 |  6.40815 |  6.28035 | 6.19861 |
+| 14 |  8.61201 |  7.31861 |  6.74751 |  6.60467 | 6.5266  |
+| 15 |  8.97479 |  7.62647 |  7.05084 |  6.91443 | 6.83986 |
+| 16 |  9.41228 |  7.95342 |  7.39093 |  7.26171 | 7.15855 |
+| 17 | 10.0989  |  8.47883 |  7.9219  |  7.78563 | 7.67256 |
+| 18 | 10.9359  |  9.08686 |  8.54835 |  8.39948 | 8.2701  |
+| 19 | 11.9926  |  9.87123 |  9.3027  |  9.14663 | 8.99534 |
+| 20 | 13.4588  | 10.991   | 10.4012  | 10.1925  | 9.99393 |
++----+----------+----------+----------+----------+---------+
+
+Simulationsdauer: 25646 sec. = ca. 7 Std.
+```
+
+Das folgende Bild zeigt die o. g. Entnahmerate grafisch an.
+
+![ForwardEntnahmerate](docu/ForwardEntnahmerate.png)
+
+
+
 ## 3. Berücksichtigung von zukünftigen Assets bei der Rentenplanung
 Innerhalb des Erwerbslebens werden Rentenpunkte gesammelt. Diese Rentenpunkte ergeben mit dem aktuellen Rentenwert (2021: 34,19€ in Westdeutschland) eine monatliche Rente.
 Diese wird ab dem Rentenalter (in der Regel ab 67 Jahren) ausgezahlt. Eine zusätzliche monatliche Rente hat einen Einfluss auf die Entnahmerate, da ab Rentenbeginn weniger aus dem Depot entnommen werden muss. 
 
 Im Folgenden werden die Python-Skripte um eine zusätzliche Komponente der gesetzlichen Rente erweitert. 
 
-Hierfür wird die bereits eingeführte Konfiguration um die Rente-Konfiguration (_pension_) erweitert:
+Hierfür wird die bereits eingeführte Konfiguration um die Renten-Konfiguration (_pension_) erweitert:
 
 ```
 config = {
@@ -87,7 +135,7 @@ Diese werden ebenfalls in der Konfiguration unter (_invest_) entsprechend berüc
 Ähnlich wie bei der Rente können an dieser Stelle mehrere Einträge in Form eines Vektors erfolgen. 
 
 
-### 3.1. Simulationszenario: Kann Mad (42) ab sofort in Rente gehen?
+### 3.1. Simulationsszenario: Kann Mad (42) ab sofort in Rente gehen?
 Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel:  [Kann Mad (42) ab sofort in Rente gehen?](https://www.finanzen-erklaert.de/kann-mad-ab-sofort-in-rente-gehen/)
 
 Coming soon ....
