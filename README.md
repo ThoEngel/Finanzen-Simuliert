@@ -57,7 +57,7 @@ Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erkl�
 
 Da bei der Auswertung die Ruhephase von 0 ... 20 Jahren und die Entnahmephase bei 20, 30, 40, 50 und 60 Jahren berechnet wird,
 sind somit insgesamt 21 x 5 = 105 Optimierung durchzuführen. In einem Optimierungslauf werden alle 1440 Epochen (01/1900 - 12/2020) mit der jeweilige Laufzeit (Ruhephase + Entnahmephase) berechnet. 
-Dies ist sehr rechenintensiv und wurde daher auf der einzelnen Rechenkerne verteilt. 
+Dies ist sehr rechenintensiv und wurde daher auf die einzelnen Rechenkerne aufgeteilt. 
  
 
 Mit dem Python-Skript [ForwardEntnahmerate.py](https://github.com/ThoEngel/rentenplanung/blob/main/ForwardEntnahmerate.py) werden die folgenden Entnahmen in Abhängigkeit der Entnahmedauer sowie der Ruhephase berechnet:
