@@ -15,6 +15,7 @@ from tabulate import tabulate
 import multiprocessing
 from multiprocessing import Process
 
+# Funktion zur Optmierung der Entnahmerate
 def optimize(s, probability, loBound, hiBound):
     """ Optimiere auf die max. mögliche Entnahme bei einer vorgegebenen Fehlerquote
 
@@ -24,7 +25,7 @@ def optimize(s, probability, loBound, hiBound):
 
     n_ret_months = s.simulation['n_ret_years'] * 12
 
-    accuracy = 0.02     # Genauigkeit der Optimierung
+    accuracy = 0.005     # Genauigkeit der Optimierung
 
     # Vorbereitung der Optimierung
     deltaWidthdrawal = (hiBound - loBound) / 2
@@ -60,8 +61,8 @@ def optimize(s, probability, loBound, hiBound):
 
     return percWidthdrawal
 
-
-def func1(DauerEntnahme, send_end):
+# Funktion zur Berechnung der Forward Entnahmerate
+def forward(DauerEntnahme, send_end):
 
     # Lesen monatliche S&P500 Daten
     RETURN_FILE = 'real_return_df.pickle'
@@ -120,7 +121,7 @@ if __name__ == "__main__":
 
     # Starte die einzelnen Job's
     for phase in Entnahmephase:
-        p = Process(target=func1, args=(phase, send_end))
+        p = Process(target=forward, args=(phase, send_end))
         pipe_list.append(recv_end)
         jobs.append(p)
         p.start()
@@ -131,24 +132,43 @@ if __name__ == "__main__":
     print("Fertig!")
     print('\nSimulationsdauer: %5.2f sec.' % (time.time() - starttime))
 
-    # Ergebnisse Zusammensammeln:
+    # Ergebnisse Zusammenstellen:
     df = pd.DataFrame(columns=Entnahmephase, index=Ruhephasen)
 
     for i, x in enumerate(pipe_list):
         vector = x.recv()
         df.iloc[:, i] = vector
 
-
-    print('\nErgebnis: Forward Entnahmeraten in Abhängigkeit der Ruhephase (Zeile) sowie der Entnahmephase (Spalte):')
+    print('\nErgebnis: Forward-Entnahmeraten in Abhängigkeit der Ruhephase (Zeile) sowie der Entnahmephase (Spalte):')
     print(tabulate(df, headers = 'keys', tablefmt = 'psql'))
     print('\n')
 
-    # Visualisierung der Ergebnisse:
+    # Ergebnis: Wachstum der Entnahmerate
+    df1 = pd.DataFrame(columns=Entnahmephase, index=Ruhephasen)
+    for i, row in enumerate(df.columns):
+        df1.iloc[:, i] = 100 * df.iloc[:, i].diff() / df.iloc[:, i]
+
+    # Visualisierung der Entnahmerate in Abhängigkeit der Ruhephase sowie der Entnahmephase
     fig = px.line(df)
     fig.update_layout(
-        title="Forward Entnahmeraten in Abhängigkeit der Ruhephase sowie der Entnahmephase",
+        title="Forward-Entnahmeraten in Abhängigkeit der Ruhephase sowie der Entnahmephase",
         xaxis_title="Ruhephase [Jahre]",
         yaxis_title="Entnahmerate [%]",
+        legend_title="Entnahmezeit [Jahre]",
+        font=dict(
+            family="Courier New, monospace",
+            size=18,
+            color="RebeccaPurple"
+        )
+    )
+    fig.show()
+
+    # Visualisierung Wachstum Entnahmerate
+    fig = px.line(df1)
+    fig.update_layout(
+        title="Forward-Entnahmeraten: Wachstum Entnahmerate",
+        xaxis_title="Ruhephase [Jahre]",
+        yaxis_title="Wachstum Entnahmerate [%]",
         legend_title="Entnahmezeit [Jahre]",
         font=dict(
             family="Courier New, monospace",
