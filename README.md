@@ -93,13 +93,9 @@ Simulationsdauer: 30641 sec. = ca. 8 Std.
 ```
 
 Das folgende Bild zeigt die o. g. Entnahmerate grafisch an.
-
 ![ForwardEntnahmerate](docu/ForwardEntnahmerate.png)
 
-An dem o. g. Beispiel erhöht sich die sichere Entnahmerate nach einer Wartezeit von fünf Jahren durchschnittlich um ca. 7% pro Jahr. 
-Dies entspricht in etwa auch der durchschnittlichen realen Rendite des zugrunde liegenden 
-Daten (S&P 500 Total Return 1900-2020).
-
+Die sichere Entnahmerate wächst Prozentual wie folgt: 
 ![ForwardEntnahmerate_1](docu/ForwardEntnahmerate_1.png)
 
 
