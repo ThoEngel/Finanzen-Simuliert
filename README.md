@@ -1,5 +1,4 @@
-## Rentenplanung
-Tool zur Rentenplanung
+## Finanzen? Simuliert!
 
 Das Python Tool dient zur Bestimmung der sicheren Entnahmerate aus einem Weltportfolio:
 
@@ -166,6 +165,3 @@ Coming soon ....
 [Early Retirement Now](https://earlyretirementnow.com/2018/08/29/google-sheet-updates-swr-series-part-28/)
 
 [Trinity Studie: Determining Withdrawal Rates Using Historical Data](http://www.retailinvestor.org/pdf/Bengen1.pdf)
-
-
-
