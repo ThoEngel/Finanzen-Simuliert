@@ -29,7 +29,7 @@ print(return_df.head())
 ....
 
 ```
-#Finanzen? Simuliert!
+# Finanzen? Simuliert!
 
 Die folgenden Implementierungen und Auswertungen bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/)
 
