@@ -17,6 +17,7 @@ class Trialdata:
 
     inflation: List[float] = field(default_factory=list)
     months: List[int] = field(default_factory=list)
+    cape: List[int] = field(default_factory=list)
     end_ports: List[float] = field(default_factory=list)
     spends: List[float] = field(default_factory=list)
     trial_df: pd.DataFrame = None
@@ -70,8 +71,19 @@ class SEsimulation():
             Exception: bad values
 
         """
-        self.simulation['n_asset_years'], self.simulation['n_assets'] = self.simulation['returns_df'].shape
+        #self.simulation['n_asset_years'], self.simulation['n_assets'] = self.simulation['returns_df'].shape
         self.simulation['trials'] = self.historical_trials()
+
+    def init_simulation_onetrial(self):
+        """initialize / reinitialize simulation based on configs
+
+        Raises:
+            Exception: bad values
+
+        """
+
+        self.simulation['trials'] = self.historical_onetrial()
+
 
     def init_withdrawal(self):
         """initialize for withdrawal based on configs
@@ -125,7 +137,7 @@ class SEsimulation():
             if (idxDate + cnt) < num_of_months:
                 yield tuple(df.iloc[idxDate + cnt])
             else:
-                idxDate = -cnt # Von vorne wieder beginnen
+                idxDate = -cnt  # Von vorne wieder beginnen
                 yield tuple(df.iloc[idxDate + cnt])
             cnt += 1
 
@@ -141,6 +153,39 @@ class SEsimulation():
         for idxDate in range(0, num_of_dates):
             yield self.historical_trial_generator(idxDate)
 
+    def historical_onetrial(self):
+        """
+        eine Epoche für einen Zeitpunkt generieren
+        """
+
+        df = self.simulation['returns_df']
+
+        # Startzeitpunkte holen
+        Date = self.date['start']
+        month = Date.Month
+        year = Date.Year
+
+        # Index des Startzeitpunktes berechnen
+        idx = df.index[(df['month'] == month) & (df['year'] == year)]
+        yield self.historical_trial_generator(idx.values[0])
+
+
+    def simulate_onetrial(self):
+        """
+        Epoche simulieren und bewerten
+        """
+
+        self.latest_simulation = []
+
+        for trial in self.simulation['trials']:
+            trial_df = self.simulate_trial(trial)
+
+            # Bewerte die Epoche
+            eval_metrics_dict = self.eval_trial()
+            df_dict = {'trial': trial_df}
+            self.latest_simulation.append({**df_dict, **eval_metrics_dict})
+            break
+        return self.latest_simulation
 
     def simulate(self):
         """
@@ -181,9 +226,10 @@ class SEsimulation():
         for i, t in enumerate(trial_rows):
 
             # Aktuelle S&P500 Werte holen
-            month, year, port_return, cpi = int(t[0]), int(t[1]), t[2], t[3]
+            month, year, port_return, cpi, cape = int(t[0]), int(t[1]), t[2], t[3], t[4]
 
             current_trial.months.append(year * 12 + month)
+            current_trial.cape.append(cape)
 
             # Inflation:
             curInflation *= (1 + cpi)
@@ -208,7 +254,8 @@ class SEsimulation():
         current_trial.trial_df = pd.DataFrame(index=current_trial.months,
                               data={'spend': current_trial.spends,
                                     'end_port': current_trial.end_ports,
-                                    'inflation': current_trial.inflation
+                                    'inflation': current_trial.inflation,
+                                    'cape': current_trial.cape
                                     })
 
         return current_trial.trial_df

@@ -30,8 +30,8 @@ print(return_df.head())
 ....
 
 ```
-## 2. Vorsicht vor der 4% Regel
-Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel:  [Vorsicht vor der 4% Regel]( https://www.finanzen-erklaert.de/vorsicht-vor-der-4-regel/)
+## 2. Entnahme selbst simuliert ... 
+Die folgenden Implementierungen und Auswertungen bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/)
 
 ## 2.1. Analyse der 4% Regel
 Im Oktober 1994 wurde die [Trinity-Studie](http://www.retailinvestor.org/pdf/Bengen1.pdf) durch William Bengen veröffentlich. Diese Studie, besser bekannt unter der 4%-Regel 
@@ -97,6 +97,20 @@ Das folgende Bild zeigt die o. g. Entnahmerate grafisch an.
 
 Die sichere Entnahmerate wächst Prozentual wie folgt: 
 ![ForwardEntnahmerate_1](docu/ForwardEntnahmerate_1.png)
+
+
+### 2.4. Entnahmestrategien optimieren – bessere Rente dank CAPE Ratio
+Bei der folgenden Berechnung wird der Zusammenhang zwischen Entnahmerate und CAPE Ratio analysiert.
+
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Entnahmestrategien optimieren – bessere Rente dank CAPE Ratio](https://www.finanzen-erklaert.de/entnahmestrategien-optimieren-bessere-rente-dank-cape-ratio/)
+
+Auswertung der sicheren Entnahmerate und dem CAPE Ratio (60 Jahren Entnahmezeit, S&P500 real vpn 1900-2020): 
+![Sicher Entnahme CAPE 1](docu/SichereEntnahmeCape_1.png)
+
+Auswertung der sicheren Entnahmerate in Abhängigkeit vom CAPE (60 Jahren Entnahmezeit, S&P500 real von 1900-2020):
+![Sicher Entnahme CAPE 2](docu/SichereEntnahmeCape_2.png)
+
+Das Python-Skript [SichereEntnahmeCAPE.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahmeCAPE.py) berechnet für jeden möglichen Startzeitpunkt (12 Monate x 120 Jahre = 1440) eine maximale Entnahmerate.
 
 
 ## 3. Berücksichtigung von zukünftigen Assets bei der Rentenplanung
