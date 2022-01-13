@@ -1,4 +1,4 @@
-## Finanzen? Simuliert!
+# Finanzen? Simuliert!
 
 Das Python Tool dient zur Bestimmung der sicheren Entnahmerate aus einem Weltportfolio:
 
@@ -29,9 +29,6 @@ print(return_df.head())
 ....
 
 ```
-# Finanzen? Simuliert!
-
-Die folgenden Implementierungen und Auswertungen bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/)
 
 ## 2. Entnahme-Simulation
 
