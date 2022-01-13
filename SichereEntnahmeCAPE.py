@@ -11,6 +11,10 @@ from SEsimulation.mDate import mDate
 from SEsimulation import SEsimulation
 import plotly.express as px
 
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+
 def optimize(s, probability, loBound, hiBound):
     """ Optimiere auf die max. mögliche Entnahme bei einer vorgegebenen Fehlerquote
 
@@ -115,18 +119,29 @@ if __name__ == "__main__":
             df.iloc[row_indexer, 1] = tmp.iloc[0]
             row_indexer += 1
 
-    fig = px.scatter(df)
 
-    fig.update_layout(
-        title="Sichere Entnahmerate kalibriert auf den S&P 500 TR real nach CAPE Ratio",
-        xaxis_title="Zeit [Monate]",
-        yaxis_title="Sichere Entnahme [%]",
-        font=dict(
-            family="Courier New, monospace",
-            size=18,
-            color="RebeccaPurple"
-        )
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+
+    # Add traces
+    fig.add_trace(
+        go.Scatter(x=df.index, y=df['Entnahmerate'], name="Entnahmerate [%]"),
+        secondary_y=False,
     )
+
+    fig.add_trace(
+        go.Scatter(x=df.index, y=df['CAPE'], name="CAPE [-]"),
+        secondary_y=True,
+    )
+
+    # Add figure title
+    fig.update_layout(title_text="Sichere Entnahmerate kalibriert auf den S&P 500 TR real nach CAPE Ratio")
+
+    # Set x-axis title
+    fig.update_xaxes(title_text="Zeit [Monate]")
+
+    # Set y-axes titles
+    fig.update_yaxes(title_text="Sichere Entnahme [%]", secondary_y=False)
+    fig.update_yaxes(title_text="CAPE [-]", secondary_y=True)
     fig.show()
 
     fig = px.scatter(df, y='Entnahmerate', x='CAPE')
