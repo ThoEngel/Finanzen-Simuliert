@@ -1,6 +1,6 @@
 # Finanzen? Simuliert!
 
-Das Python Tool dient zur Bestimmung der sicheren Entnahmerate aus einem Weltportfolio:
+Das Python Tool dient zur Bestimmung der sicheren Entnahmerate Portfolio:
 
 * Beliebige Generierung von Vermögensrenditen (historische S&P500, Monte Carlo)
 * Beliebige Vermögensallokationsstrategien
@@ -112,6 +112,30 @@ Auswertung der sicheren Entnahmerate in Abhängigkeit vom CAPE (60 Jahren Entnah
 ![Sicher Entnahme CAPE 2](docu/SichereEntnahmeCape_2.png)
 
 Das Python-Skript [SichereEntnahmeCAPE.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahmeCAPE.py) berechnet für jeden möglichen Startzeitpunkt (12 Monate x 120 Jahre = 1440) eine maximale Entnahmerate.
+
+### 2.5. Risikoermittlung während der Entnahmephase
+
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Erkennen, wenn die Pleite droht – besteht während der Entnahmephase Handlungsbedarf?](https://www.finanzen-erklaert.de/wann-besteht-in-der-entnahmephase-handlungsbedarf/)
+
+Mit Hilfe des folgenden Python-Skripts [SichereEntnahmePleiteRisiko.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahmePleiteRisiko.py) lässt sich die folgende Auswertung ermitteln:
+
+![Sichere Entnahme Pleiterisiko](docu/SichereEntnahmePleiteRisiko_1.png)
+
+Mittels der folgenden Konfiguration kann die Entnahmerate (fixed_pct) sowie der Entnahmezeitraum (n_ret_years) an seine Bedürfnisse angepasst werden:
+
+```
+    config = {
+        'date': {'start': mDate(1, 2022),              # Start Datum
+                 'start_retirement': mDate(1, 2022)},  # Start der Entnahme
+        'assets': {'depot': 100,                       # Depotvolumen zum Startzeitpunkt
+                   'fees': 0.00},                      # Jährliche Depotgebühren in %
+        'simulation': {'returns_df': real_return_df,   # S&P500 Daten
+                       'n_ret_years': 30},             # Simulationsdauer in Jahren
+        'withdrawal': {'fixed_pct': 4.0},              # Proz. Entnahmerate pro Jahr vom Startdepot
+        'visualization': {'textoutput': False}         # Textueller Zwischenausgaben als Debug Info
+    }
+```
+
 
 
 ## 3. Berücksichtigung von zukünftigen Assets bei der Rentenplanung

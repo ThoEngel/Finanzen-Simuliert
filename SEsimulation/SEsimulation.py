@@ -228,7 +228,7 @@ class SEsimulation():
             # Aktuelle S&P500 Werte holen
             month, year, port_return, cpi, cape = int(t[0]), int(t[1]), t[2], t[3], t[4]
 
-            current_trial.months.append(year * 12 + month)
+            current_trial.months.append(i)  #current_trial.months.append(year * 12 + month)
             current_trial.cape.append(cape)
 
             # Inflation:
