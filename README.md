@@ -120,7 +120,7 @@ Artikel: [Erkennen, wenn die Pleite droht – besteht während der Entnahmephase
 
 Mit Hilfe des folgenden Python-Skripts [SichereEntnahmePleiteRisiko.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahmePleiteRisiko.py) lässt sich die folgende Auswertung ermitteln:
 
-**Achtung**: Die Achsenbeschriftung ist umgedreht zum Original-Artikel.
+**Achtung**: Die Achsenzuordnug ist umgedreht zum Original-Artikel.
 ![Sichere Entnahme Pleiterisiko](docu/SichereEntnahmePleiteRisiko_1.png)
 
 Mittels der folgenden Konfiguration kann die Entnahmerate (fixed_pct) sowie der Entnahmezeitraum (n_ret_years) an seine Bedürfnisse angepasst werden:
