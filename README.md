@@ -115,10 +115,12 @@ Das Python-Skript [SichereEntnahmeCAPE.py](https://github.com/ThoEngel/rentenpla
 
 ### 2.5. Risikoermittlung während der Entnahmephase
 
-Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Erkennen, wenn die Pleite droht – besteht während der Entnahmephase Handlungsbedarf?](https://www.finanzen-erklaert.de/wann-besteht-in-der-entnahmephase-handlungsbedarf/)
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) 
+Artikel: [Erkennen, wenn die Pleite droht – besteht während der Entnahmephase Handlungsbedarf?](https://www.finanzen-erklaert.de/wann-besteht-in-der-entnahmephase-handlungsbedarf/)
 
 Mit Hilfe des folgenden Python-Skripts [SichereEntnahmePleiteRisiko.py](https://github.com/ThoEngel/rentenplanung/blob/main/SichereEntnahmePleiteRisiko.py) lässt sich die folgende Auswertung ermitteln:
 
+**Achtung**: Die Achsenbeschriftung ist umgedreht zum Original-Artikel.
 ![Sichere Entnahme Pleiterisiko](docu/SichereEntnahmePleiteRisiko_1.png)
 
 Mittels der folgenden Konfiguration kann die Entnahmerate (fixed_pct) sowie der Entnahmezeitraum (n_ret_years) an seine Bedürfnisse angepasst werden:
