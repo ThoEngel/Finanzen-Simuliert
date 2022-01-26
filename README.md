@@ -177,7 +177,7 @@ unterschiedlichen Rentenbeträgen).
 ### 3.1. Gesetzliche Rente mit 63 ist immer die richtige Entscheidung
 Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Gesetzliche Rente mit 63 ist immer die richtige Entscheidung](https://www.finanzen-erklaert.de/gesetzliche-rente-mit-63-ist-immer-die-richtige-entscheidung/)
 
-Mithilfe des folgenden Python-Skripts [GesetzlicherRenteMit63.py](https://github.com/ThoEngel/rentenplanung/blob/main/GesetzlicherRenteMit63.py) 
+Mithilfe des folgenden Python-Skripts [GesetzlicheRenteMit63.py](https://github.com/ThoEngel/rentenplanung/blob/main/GesetzlicherRenteMit63.py) 
 lässt sich eine vorgezogene Rente mit 63 Jahren sowie Rentenabschlag argumentieren:
 
 ![Erhöhung der Entnahmerate durch gesetzliche Rente regulär ab 67 und ab 63 mit 14,4% Abschlag](docu/GesetzlicheRenteMit63.png)
