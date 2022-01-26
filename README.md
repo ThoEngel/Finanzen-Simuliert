@@ -149,34 +149,42 @@ Im Folgenden werden die Python-Skripte um eine zusätzliche Komponente der geset
 Hierfür wird die bereits eingeführte Konfiguration um die Renten-Konfiguration (_pension_) erweitert:
 
 ```
-config = {
-    'date': {'start': mDate(1, 2022)},
-    'assets': {'depot': 500000,
-               'fees': 0.20},
-    'pension': {'point': np.array([46.0, 31.5]),
-                'start_date': [mDate(12, 2038), mDate(12, 2041)],
-                'name': {'John Doe', 'Jane Doe'},
-                'point_value': 34.19,
-                'point_value_inc': 0.5},
-    'simulation': {'returns_df': real_return_df,
-                   'n_ret_years': 30},
-    'invest': {'date': [mDate(1, 2041)],
-               'amount': np.array([500000.0])}, 
-               'description': {'Erbe'}  
-    'withdrawal': {'fixed_pct': 4.0},
-    'visualization': {'textoutput': True}    
-}
+    config = {
+        'date': {'start': mDate(1, 2022),              # Start Datum
+                 'start_retirement': mDate(1, 2022)},  # Start der Entnahme
+        'assets': {'depot': 500000,                    # Depotvolumen zum Startzeitpunkt
+                   'fees': 0.00},                      # Jährliche Depotgebühren in %
+        'simulation': {'returns_df': real_return_df,   # S&P500 Daten
+                       'n_ret_years': 30},             # Simulationsdauer in Jahren
+        'withdrawal': {'fixed_pct': 4.0},              # Proz. Entnahmerate pro Jahr vom Startdepot
+        'pension': {'point': np.array([30]),           # Anzahl erworbener Rentenpunkte
+                    'point_add': np.array([0.0]),      # Rentenpunktzuwachs pro Jahr
+                    'start_date': [mDate(1, 2027)],    # Beginn der gesetzlichen Rente
+                    'name': {'John Doe'},              # Name des Rentenbeziehers
+                    'point_value': 39.14,              # aktueller Rentenpunktwert
+                    'point_value_inc': 0.5},           # Proz. Steigerung des Rentenpunktwertes
+        'visualization': {'textoutput': True}          # Textuelle Zwischenausgaben als Debug Info
+    }
+
 ```
 
-Diese Rentenkonfiguration beinhaltet die bereits erworbenen Rentenpunkte (_point_), den Starttermin der gesetzlichen Rente (_start_date_), den Namen der rentenberechtigen Person, die Rentenpunktwert (_point_value_) sowie die jährliche prozentuale Steigerung der Rentenpunktwertes (_point_value_inc_).
-Bei den genannten Werten handelt es sich bis auf dem Rentenpunktwert und Steigerung alles um Vektoren, um mehrere Rentenzahlungen zu berücksichtigen (z. B. Mann und Frau zu unterschiedlichen Zeitpunkten mit unterschiedlichen Rentenbeträgen).
+Diese Rentenkonfiguration beinhaltet die bereits erworbenen Rentenpunkte (_point_), den Starttermin der gesetzlichen Rente (_start_date_), 
+den Namen der rentenberechtigen Person, die Rentenpunktwert (_point_value_) sowie die jährliche prozentuale Steigerung der 
+Rentenpunktwertes (_point_value_inc_). Bei den genannten Werten handelt es sich bis auf dem Rentenpunktwert und Steigerung 
+alles um Vektoren, um mehrere Rentenzahlungen zu berücksichtigen (z. B. Mann und Frau zu unterschiedlichen Zeitpunkten mit 
+unterschiedlichen Rentenbeträgen).
 
-Neben der Rente können auch sonstige Zuflüsse (z. B. Auszahlung Lebensversicherung, Immobilienverkäufe, Erben, usw.) berücksichtigt werden. 
-Diese werden ebenfalls in der Konfiguration unter (_invest_) entsprechend berücksichtigt und beinhalten das Zahldatum (_date_), den Betrag (_amount_) sowie eine kurze Beschreibung (_description_).
-Ähnlich wie bei der Rente können an dieser Stelle mehrere Einträge in Form eines Vektors erfolgen. 
+###3.1. Gesetzliche Rente mit 63 ist immer die richtige Entscheidung
+Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Gesetzliche Rente mit 63 ist immer die richtige Entscheidung](https://www.finanzen-erklaert.de/gesetzliche-rente-mit-63-ist-immer-die-richtige-entscheidung/)
+
+Mithilfe des folgenden Python-Skripts [GesetzlicherRenteMit63.py](https://github.com/ThoEngel/rentenplanung/blob/main/GesetzlicherRenteMit63.py) 
+lässt sich eine vorgezogene Rente mit 63 Jahren sowie Rentenabschlag argumentieren:
+
+![Erhöhung der Entnahmerate durch gesetzliche Rente regulär ab 67 und ab 63 mit 14,4% Abschlag](docu/GesetzlicherRenteMit63.png)
 
 
-### 3.1. Simulationsszenario: Kann Mad (42) ab sofort in Rente gehen?
+
+### 3.2. Simulationsszenario: Kann Mad (42) ab sofort in Rente gehen?
 Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel:  [Kann Mad (42) ab sofort in Rente gehen?](https://www.finanzen-erklaert.de/kann-mad-ab-sofort-in-rente-gehen/)
 
 Coming soon ....

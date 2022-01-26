@@ -20,6 +20,7 @@ class Trialdata:
     cape: List[int] = field(default_factory=list)
     end_ports: List[float] = field(default_factory=list)
     spends: List[float] = field(default_factory=list)
+    pension: List[float] = field(default_factory=list)
     trial_df: pd.DataFrame = None
 
 
@@ -49,6 +50,9 @@ class SEsimulation():
 
         self.visualization = config.get('visualization')
         self.init_visualization()
+
+        self.pension = config.get('pension')
+        self.init_pension()
 
         self.latest_trial = Trialdata()
         self.latest_simulation = []
@@ -95,6 +99,10 @@ class SEsimulation():
         """
         pass
 
+    def init_pension(self):
+        """set up pension
+        """
+        pass
 
     def get_withdrawal(self):
         """return withdrawal for current iteration
@@ -220,6 +228,13 @@ class SEsimulation():
         curDate = copy.deepcopy(self.date['start'])
         curStartRetr = copy.deepcopy(self.date['start_retirement'])
 
+        # Pension
+        curPensionPoints = copy.deepcopy(self.pension['point'])
+        curPensionPointAdd = copy.deepcopy(self.pension['point_add'])
+        curPensionPointValue = copy.deepcopy(self.pension['point_value'])
+        curPensionPointValueInc = copy.deepcopy(self.pension['point_value_inc'])
+        curPensionStartDate = copy.deepcopy(self.pension['start_date'])
+
         # Inflation
         curInflation = 100
 
@@ -235,9 +250,29 @@ class SEsimulation():
             curInflation *= (1 + cpi)
             current_trial.inflation.append(curInflation)
 
+            # Pension Points:
+            if curDate.Month == 1:
+                # Jährliche Erhöhung Rentenpunktwert
+                curPensionPointValue *= (1 + curPensionPointValueInc/100)
+
+            # Cal Pension
+            factor = np.array([])
+            for Date in curPensionStartDate:
+                if curDate < Date:
+                    factor = np.append(factor, [0.0])
+                else:
+                    factor = np.append(factor, [1.0])
+
+            curPension = float(np.sum((curPensionPoints * factor) * curPensionPointValue))
+
+            self.latest_trial.pension.append(curPension)
+
             # Entnahme aus dem Depot
             if curStartRetr <= curDate:  # Entnahme aus dem Depot
-                current_trial.spend = min(float(self.get_withdrawal()/12), current_trial.portval)
+                tmp = float(self.get_withdrawal()/12) - float(curPension)
+                tmp = max(tmp, 0)
+
+                current_trial.spend = min(tmp, current_trial.portval)
                 current_trial.spends.append(current_trial.spend)
             else:
                 current_trial.spend = 0
@@ -255,10 +290,8 @@ class SEsimulation():
                               data={'spend': current_trial.spends,
                                     'end_port': current_trial.end_ports,
                                     'inflation': current_trial.inflation,
-                                    'cape': current_trial.cape
+                                    'cape': current_trial.cape,
+                                    'pension': current_trial.pension
                                     })
 
         return current_trial.trial_df
-
-if __name__ == '__main__':
-    print('Executing as standalone script')
