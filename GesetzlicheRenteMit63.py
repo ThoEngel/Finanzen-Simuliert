@@ -86,7 +86,7 @@ if __name__ == "__main__":
         'visualization': {'textoutput': False}          # Textueller Zwischenausgaben als Debug Info
     }
 
-    AlterVec = range(40, 61, 5)
+    AlterVec = range(40, 61, 1)
 
     err_rate = 2.5
 
