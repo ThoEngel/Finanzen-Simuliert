@@ -180,7 +180,7 @@ Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erkl�
 Mithilfe des folgenden Python-Skripts [GesetzlicherRenteMit63.py](https://github.com/ThoEngel/rentenplanung/blob/main/GesetzlicherRenteMit63.py) 
 lässt sich eine vorgezogene Rente mit 63 Jahren sowie Rentenabschlag argumentieren:
 
-![Erhöhung der Entnahmerate durch gesetzliche Rente regulär ab 67 und ab 63 mit 14,4% Abschlag](docu/GesetzlicherRenteMit63.png)
+![Erhöhung der Entnahmerate durch gesetzliche Rente regulär ab 67 und ab 63 mit 14,4% Abschlag](docu/GesetzlicheRenteMit63.png)
 
 
 
