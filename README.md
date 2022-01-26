@@ -174,7 +174,7 @@ Rentenpunktwertes (_point_value_inc_). Bei den genannten Werten handelt es sich 
 alles um Vektoren, um mehrere Rentenzahlungen zu berücksichtigen (z. B. Mann und Frau zu unterschiedlichen Zeitpunkten mit 
 unterschiedlichen Rentenbeträgen).
 
-###3.1. Gesetzliche Rente mit 63 ist immer die richtige Entscheidung
+### 3.1. Gesetzliche Rente mit 63 ist immer die richtige Entscheidung
 Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel: [Gesetzliche Rente mit 63 ist immer die richtige Entscheidung](https://www.finanzen-erklaert.de/gesetzliche-rente-mit-63-ist-immer-die-richtige-entscheidung/)
 
 Mithilfe des folgenden Python-Skripts [GesetzlicherRenteMit63.py](https://github.com/ThoEngel/rentenplanung/blob/main/GesetzlicherRenteMit63.py) 
