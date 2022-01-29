@@ -12,6 +12,7 @@ import time
 from SEsimulation.mDate import mDate
 from SEsimulation import SEsimulation
 import plotly.express as px
+import numpy as np
 
 def optimize(s, probability, loBound, hiBound):
     """ Optimiere auf die max. mögliche Entnahme bei einer vorgegebenen Fehlerquote
@@ -68,12 +69,18 @@ real_return_df = pd.read_pickle(RETURN_FILE)
 # Konfiguration der Entnahme Simulation
 config = {
     'date': {'start': mDate(1, 2022),             # Start Datum
-    'start_retirement': mDate(1, 2022)},           # Start der Entnahme
+             'start_retirement': mDate(1, 2022)},           # Start der Entnahme
     'assets': {'depot': 500000,                    # Depotvolumen zum Startzeitpunkt
                'fees': 0.00},                      # Jährliche Depotgebühren in %
     'simulation': {'returns_df': real_return_df,   # S&P500 Daten
                    'n_ret_years': 30},             # Simulationsdauer in Jahren
     'withdrawal': {'fixed_pct': 4.0},              # Proz. Entnahmerate pro Jahr vom Startdepot
+    'pension': {'point': np.array([0]),  # Anzahl erworbener Rentenpunkte
+                'point_add': np.array([0.0]),  # Rentenpunktzuwachs pro Jahr
+                'start_date': [mDate(1, 3000)],  # Beginn der gesetzlichen Rente
+                'name': {'John Doe'},  # Name des Rentenbeziehers
+                'point_value': 0.0,  # aktueller Rentenpunktwert
+                'point_value_inc': 0.0},  # Proz. Steigerung des Rentenpunktwertes
     'visualization': {'textoutput': True}          # Textueller Zwischenausgaben als Debug Info
 }
 
