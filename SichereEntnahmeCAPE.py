@@ -13,6 +13,7 @@ import plotly.express as px
 
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import numpy as np
 
 
 def optimize(s, probability, loBound, hiBound):
@@ -76,14 +77,20 @@ if __name__ == "__main__":
 
     # Konfiguration der Entnahme Simulation
     config = {
-        'date': {'start': mDate(1, 2022),             # Start Datum
-                 'start_retirement': mDate(1, 2022)},           # Start der Entnahme
+        'date': {'start': mDate(1, 2022),              # Start Datum
+                 'start_retirement': mDate(1, 2022)},  # Start der Entnahme
         'assets': {'depot': 500000,                    # Depotvolumen zum Startzeitpunkt
                    'fees': 0.00},                      # Jährliche Depotgebühren in %
         'simulation': {'returns_df': real_return_df,   # S&P500 Daten
                        'n_ret_years': 60},             # Simulationsdauer in Jahren
         'withdrawal': {'fixed_pct': 4.0},              # Proz. Entnahmerate pro Jahr vom Startdepot
-        'visualization': {'textoutput': False}          # Textueller Zwischenausgaben als Debug Info
+        'pension': {'point': np.array([0]),            # Anzahl erworbener Rentenpunkte
+                    'point_add': np.array([0.0]),      # Rentenpunktzuwachs pro Jahr
+                    'start_date': [mDate(1, 3000)],    # Beginn der gesetzlichen Rente
+                    'name': {'John Doe'},              # Name des Rentenbeziehers
+                    'point_value': 0.0,                # aktueller Rentenpunktwert
+                    'point_value_inc': 0.0},           # Proz. Steigerung des Rentenpunktwertes
+        'visualization': {'textoutput': False}         # Textueller Zwischenausgaben als Debug Info
     }
 
     err_rate = 0.0        # Fehlerraten [%]
@@ -92,7 +99,7 @@ if __name__ == "__main__":
 
     # Optimierungsgrenzen der proz. Entnahme:
     loBound = 2              # Untere Grenze der Optimierung
-    hiBound = 16              # Obere Grenze der Optimierung
+    hiBound = 16             # Obere Grenze der Optimierung
 
     # Update Laufzeit
 
