@@ -116,7 +116,7 @@ if __name__ == "__main__":
     print('Starte - Forward Entnahmerate')
     starttime = time.time()
 
-    Ruhephasen = range(0, 21, 5)
+    Ruhephasen = range(0, 21, 1)
     Entnahmephase = [20, 30, 40, 50, 60]
 
     # Pipline für Mulicore Precessing
