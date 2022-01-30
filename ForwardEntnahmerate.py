@@ -77,6 +77,12 @@ def forward(DauerEntnahme, send_end):
         'simulation': {'returns_df': real_return_df,  # S&P500 Daten
                        'n_ret_years': 53},  # Simulationsdauer in Jahren
         'withdrawal': {'fixed_pct': 3.0},  # Proz. Entnahmerate pro Jahr vom Startdepot
+        'pension': {'point': np.array([0]),  # Anzahl erworbener Rentenpunkte
+                    'point_add': np.array([0.0]),  # Rentenpunktzuwachs pro Jahr
+                    'start_date': [mDate(1, 3000)],  # Beginn der gesetzlichen Rente
+                    'name': {'John Doe'},  # Name des Rentenbeziehers
+                    'point_value': 0.0,  # aktueller Rentenpunktwert
+                    'point_value_inc': 0.0},  # Proz. Steigerung des Rentenpunktwertes
         'visualization': {'textoutput': False}  # Textueller Zwischenausgaben als Debug Info
     }
 
@@ -110,7 +116,7 @@ if __name__ == "__main__":
     print('Starte - Forward Entnahmerate')
     starttime = time.time()
 
-    Ruhephasen = range(0, 21, 1)
+    Ruhephasen = range(0, 21, 5)
     Entnahmephase = [20, 30, 40, 50, 60]
 
     # Pipline für Mulicore Precessing
