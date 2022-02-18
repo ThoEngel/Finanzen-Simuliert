@@ -5,7 +5,7 @@ Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erkl�
 Steuer-Parameter im Laufe der Zeit
 ![Angenommene Entwicklung der Tarifzonene im Einkommenssteuertarif](Steuertarifzonen.png)
 
-Daraus ergeben sich im Zeitverlaug für verschiedene zu versteuernde Einkommen die folgenden Durchschnittssteuersätze.
+Daraus ergeben sich im Zeitverlauf für verschiedene zu versteuernde Einkommen die folgenden Durchschnittssteuersätze.
 ![Angenommene Entwicklung des Durchschnittssteuersatzes für verschiedene Einkommenshöhen](Durchschnittssteuersatz.png)
 
 
