@@ -189,6 +189,8 @@ lässt sich eine vorgezogene Rente mit 63 Jahren sowie Rentenabschlag argumentie
 
 Hier geht es zu dem [Kapitel: Steuern](https://github.com/ThoEngel/Finanzen-Simuliert/blob/main/docu/Steuern.md) 
 
+ 
+ 
 
 ### 4.2. Simulationsszenario: Kann Mad (42) ab sofort in Rente gehen?
 Die folgende Implementierung und Auswertung bezieht sich auf den [Finanzen?Erklärt! Blog](https://www.finanzen-erklaert.de/) Artikel:  [Kann Mad (42) ab sofort in Rente gehen?](https://www.finanzen-erklaert.de/kann-mad-ab-sofort-in-rente-gehen/)
