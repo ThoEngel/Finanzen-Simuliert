@@ -47,12 +47,11 @@ def CalEst_Forecast(zvE, year):
 
     zvE = floor(zvE)
 
-    # Berecnhung der Einkommenssteuer
+    # Berechnung der Einkommenssteuer
     if zvE <= x1:
         ESt = 0
     elif zvE <= x2:
         ESt = (z2 - z1) / (2 * (x2 - x1)) * (zvE - x1) ** 2 + z1 * (zvE - x1)
-
     elif zvE <= x3:
         Est2 = (z2 - z1) / (2 * (x2 - x1)) * (x2 - x1) ** 2 + z1 * (x2 - x1)
         ESt = (z3 - z2) / (2 * (x3 - x2)) * (zvE - x2) ** 2 + z2 * (zvE - x2) + Est2
