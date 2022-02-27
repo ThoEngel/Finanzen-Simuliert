@@ -30,6 +30,9 @@ print(return_df.head())
 
 ```
 
+Datenbasis: monatliche S&P500 TR Index (real) von 01/1970 - 12/2021 [real_return_df_1970to20219.pickle](real_return_df_1970to2019.pickle)
+
+Datenbasis: monatliche S&P500 TR Index (real) von 01/1900 - 12/2021 [real_return_df.pickle](real_return_df.pickle)
 ## 2. Entnahme-Simulation
 
 ## 2.1. Analyse der 4% Regel

@@ -71,4 +71,11 @@ def CalEst_Forecast(zvE, year):
         'Zone3': x3,
     }
 
+    if (zvE > 0) and (ESt > (z4 * zvE)):
+        print('Error Steuerberechnung')
+        print('zvE:', zvE)
+        print('Est:', ESt)
+        print('x:', x1, x2, x3, x4)
+        print('i:', i)
+
     return floor(ESt), Tarifzone
