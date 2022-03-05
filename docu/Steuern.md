@@ -13,11 +13,6 @@ Mit dem Python-Skript [Einkommenssteuertarif.py](https://github.com/ThoEngel/ren
 Basis dazu ist die Funktion [CalEst_Forecast.py](https://github.com/ThoEngel/Finanzen-Simuliert/blob/main/SEsimulation/CalEst_Forecast.py) welche aus den zu versteuernden Einkommen (zvE) die Einkommenssteuer (Est) berechnet.
 
 
-# Berechnung der Nachsteuer-Entnahmerate
-Die Berechnung der Nachsteuer-Entnahmerate basiert auf den o. g. Steuerparametern. 
-Ausgangspunkt ist die klassische Entnahmerate ohne Berücksichtigung von Steuern. In dem Python-Skript 
-wird anschließend in jedem Schritt (monatlich) über ein Iterationsverfahren die notwendige Steuer ermittelt. 
-Zusätzliche wird ein Verlusttopf sowie eine virtuelle jährliche Steuererklärung berücksichtigt.
 
 
 ## Quellen:
